@@ -1,0 +1,24 @@
+{
+  "name": "frend-utils",
+  "version": "1.0.0",
+  "description": "Helper utilities for Frend components",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frend/frend-utils.git"
+  },
+  "author": "Frend Devs <hello@frend.co>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/frend/frend-utils/issues"
+  },
+  "homepage": "https://github.com/frend/frend-utils#readme",
+  "browserify": {
+    "transform": [
+      "babelify"
+    ]
+  }
+}
