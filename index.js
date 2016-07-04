@@ -9,6 +9,7 @@
 // }
 
 module.exports = {
+  closest: require('./closest'),
   defer: require('./defer'),
   q: require('./nodelist-array')
 }
