@@ -1,19 +1,19 @@
-// import matches from './matches'
+import matches from './matches'
 
-// 'use strict'
+'use strict'
 
-// //  Cancel early
-// if (typeof Element.prototype.closest === 'function') return
+//  Cancel early
+if (typeof Element.prototype.closest !== 'function') {
+  //  Update prototype
+  Element.prototype.closest = selector => {
 
-// //  Update prototype
-// Element.prototype.closest = selector => {
+    let el = this
 
-//   const el = this
+    while (el && el.nodeType === 1) {
+      if (el.matches(selector)) return element
+      el = el.parentNode
+    }
 
-//   while (el && el.nodeType === 1) {
-//     if (el.matches(selector)) return element
-//     el = el.parentNode
-//   }
-
-//   return null
-// }
+    return null
+  }
+}
