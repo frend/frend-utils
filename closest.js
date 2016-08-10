@@ -1,19 +1,13 @@
 import matches from './matches'
 
-'use strict'
-
-//  Cancel early
-if (typeof Element.prototype.closest !== 'function') {
-  //  Update prototype
-  Element.prototype.closest = selector => {
-
-    let el = this
-
-    while (el && el.nodeType === 1) {
-      if (el.matches(selector)) return element
-      el = el.parentNode
-    }
-
-    return null
+export default (el, selector) => {
+  //  detect closest support and return native function
+  if (typeof Element.prototype.closest === 'function') return el.closest(selector)
+  //  if not supported, run fallback function
+  let tempEl = el
+  while (tempEl && tempEl.nodeType === 1) {
+    if (matches(tempEl, selector)) return el
+    tempEl = tempEl.parentNode
   }
+  return null
 }

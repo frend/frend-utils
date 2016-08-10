@@ -1,5 +1,1 @@
-'use strict'
-
-export default (el, ctx = document) => {
-  return [].slice.call(ctx.querySelectorAll(el))
-}
+export default (el, ctx = document) => [].slice.call(ctx.querySelectorAll(el))

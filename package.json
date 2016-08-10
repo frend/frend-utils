@@ -4,7 +4,8 @@
   "description": "Helper utilities for Frend components",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint *.js; exit 0"
   },
   "repository": {
     "type": "git",
@@ -18,10 +19,17 @@
   "homepage": "https://github.com/frend/frend-utils#readme",
   "browserify": {
     "transform": [
-      ["babelify", { "presets": "es2015"}]
+      [
+        "babelify",
+        {
+          "presets": "es2015"
+        }
+      ]
     ]
   },
   "devDependencies": {
-    "babel-preset-es2015": "^6.9.0"
+    "babel-preset-es2015": "^6.9.0",
+    "eslint": "^3.2.2",
+    "eslint-config-airbnb": "^10.0.0"
   }
 }
