@@ -1,7 +1,3 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
 var closest = (function (el, selector) {
   var matches = function matches(matchEl, matchSelector) {
     // update prototype to match browser vendors
@@ -36,6 +32,4 @@ var nodelistArray = (function (el) {
   return [].slice.call(ctx.querySelectorAll(el));
 });
 
-exports.closest = closest;
-exports.defer = defer;
-exports.q = nodelistArray;
+export { closest, defer, nodelistArray as q };
