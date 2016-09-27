@@ -27,9 +27,45 @@ var defer = (function (fn) {
   if (typeof fn === 'function') setTimeout(fn, 0);
 });
 
+function emitter() {
+  var object = arguments.length <= 0 || arguments[0] === undefined ? {} : arguments[0];
+
+  var events = {};
+
+  function on(name, handler) {
+    events[name] = events[name] || [];
+    events[name].push(handler);
+    // console.log(events);
+    return this;
+  }
+
+  function emit(name) {
+    var _this = this;
+
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    // console.log(events);
+    var evt = events[name];
+    if (!evt) {
+      return;
+    }
+    evt.forEach(function (handler) {
+      handler.apply(_this, args);
+    });
+    return this;
+  }
+
+  return Object.assign(object, {
+    on: on,
+    emit: emit
+  });
+}
+
 var nodelistArray = (function (el) {
   var ctx = arguments.length <= 1 || arguments[1] === undefined ? document : arguments[1];
   return [].slice.call(ctx.querySelectorAll(el));
 });
 
-export { closest, defer, nodelistArray as q };
+export { closest, defer, emitter, nodelistArray as q };
