@@ -1,27 +1,26 @@
-export default function emitter(object = {}) {
+export default (object = {}) => {
   const events = {}
 
   function on(name, handler) {
     events[name] = events[name] || []
     events[name].push(handler)
-    // console.log(events);
-    return this
+  }
+
+  function off(name, handler = false) {
+    const event = events[name]
+    if (handler) event.splice(event.indexOf(handler), 1)
+    else delete events[name]
   }
 
   function emit(name, ...args) {
-    // console.log(events);
     const evt = events[name]
-    if (!evt) {
-      return
-    }
-    evt.forEach(handler => {
-      handler.apply(this, args)
-    })
-    return this
+    if (!evt) return
+    evt.forEach(handler => handler.apply(this, args))
   }
 
   return Object.assign(object, {
     on,
+    off,
     emit
   })
 }

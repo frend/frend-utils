@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
   "scripts": {
-    "build": "rollup -c",
+    "build": "rollup -c && gzip-size dist/index.js | pretty-bytes",
     "lint": "eslint src/*.js; exit 0",
     "prepublish": "npm run build"
   },
@@ -21,8 +21,10 @@
   "homepage": "https://github.com/frend/frend-utils#readme",
   "devDependencies": {
     "babel-preset-es2015-rollup": "^1.2.0",
-    "eslint": "^3.2.2",
     "eslint-config-airbnb": "^10.0.0",
+    "eslint": "^3.2.2",
+    "gzip-size-cli": "^1.0.0",
+    "pretty-bytes": "^4.0.2",
     "rollup": "^0.36.0"
   },
   "dependencies": {
